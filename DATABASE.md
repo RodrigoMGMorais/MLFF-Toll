@@ -32,7 +32,4 @@ WHERE p1.dt_passagem >= NOW() - INTERVAL '1 HOUR'
   AND EXTRACT(EPOCH FROM (p2.dt_passagem - p1.dt_passagem)) < 120 -- Menos de 2 minutos entre pórticos distantes
 ORDER BY p1.cd_tag, p1.dt_passagem;
 
-```sql
-
-### Consulta B
 
