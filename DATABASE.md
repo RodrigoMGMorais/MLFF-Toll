@@ -32,7 +32,9 @@ WHERE p1.dt_passagem >= NOW() - INTERVAL '1 HOUR'
   AND EXTRACT(EPOCH FROM (p2.dt_passagem - p1.dt_passagem)) < 120 -- Menos de 2 minutos entre pórticos distantes
 ORDER BY p1.cd_tag, p1.dt_passagem;
 
-### Consulta B: Monitoramento de Volumetria de Divergência de Categoria (Erro 5) por Pórtico
+
+
+#### Consulta B: Monitoramento de Volumetria de Divergência de Categoria (Erro 5) por Pórtico
 Query utilizada para mapear se algum pórtico específico está apresentando anomalias físicas nos sensores (Lidar/Laser),
 gerando falsos positivos de divergência acima da média estatística da rodovia.
 
@@ -47,16 +49,6 @@ GROUP BY id_portico
 ORDER BY total_divergencias DESC;
 
 
-### Consulta B: Monitoramento de Volumetria de Divergência de Categoria (Erro 5) por Pórtico
-Query utilizada para mapear se algum pórtico específico está apresentando anomalias físicas nos sensores (Lidar/Laser), gerando falsos positivos de divergência acima da média estatística da rodovia.
-
-SELECT 
-    id_portico,
-    COUNT(id_transacao) AS total_divergencias,
-    ROUND((COUNT(id_transacao) * 100.0 / (SELECT COUNT(*) FROM tb_passagem WHERE dt_passagem >= NOW() - INTERVAL '24 HOURS')), 2) AS percentual_do_trafego
-FROM tb_passagem
-WHERE cd_motivo_nao_comp = 5 -- Erro de Categoria Divergente
-  AND dt_passagem >= NOW() - INTERVAL '24 HOURS'
 GROUP BY id_portico
 ORDER BY total_divergencias DESC;
 
