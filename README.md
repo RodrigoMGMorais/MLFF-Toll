@@ -70,3 +70,13 @@ Garantir o **SLA (Service Level Agreement)** de um sistema MLFF exige monitorame
 * **Manutenção de Infraestrutura e Calibração:** Inspeções regulares nos lasers/Lidars do pórtico para evitar descalibrações ópticas decorrentes de trepidação estrutural. Monitoramento do desgaste do pavimento (fresagem corretiva) para manter a acurácia da volumetria.
 * **Monitoramento de Sistemas (Application & Network Performance):** Uso de ferramentas de observabilidade (como **Grafana / Icinga**) para acompanhar o *throughput* das filas de mensagens, latência no processamento do `ArtespConsumer`, taxas de erro de rede e consumo de CPU/Memória dos servidores de aplicação.
 * **Suporte em Banco de Dados e Logs:** Análise pragmática de logs de aplicação para rastreio de *payloads* e queries SQL estruturadas para auditoria de transações presas ou duplicadas. O foco analítico está em identificar e mitigar comportamentos anômalos que possam inflar os índices de evasão *fake* (falsos positivos de não pagamento causados por falha técnica de leitura) ou bitributação (cobrança dupla na TAG e no portal de autoatendimento).
+
+
+```markdown
+## 📖 Documentação Adicional
+
+Para entender os detalhes de implementação de baixo nível, acesse os guias dedicados:
+* [Arquitetura de Redes e Mensageria (ARCHITECTURE.md)](./ARCHITECTURE.md)
+* [Modelagem de Dados e Consultas de Auditoria SQL (DATABASE.md)](./DATABASE.md)
+
+
