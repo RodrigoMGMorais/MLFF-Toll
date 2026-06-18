@@ -32,8 +32,7 @@ WHERE p1.dt_passagem >= NOW() - INTERVAL '1 HOUR'
   AND EXTRACT(EPOCH FROM (p2.dt_passagem - p1.dt_passagem)) < 120 -- Menos de 2 minutos entre pórticos distantes
 ORDER BY p1.cd_tag, p1.dt_passagem;
 
-
-
+------------
 #### Consulta B: Monitoramento de Volumetria de Divergência de Categoria (Erro 5) por Pórtico
 Query utilizada para mapear se algum pórtico específico está apresentando anomalias físicas nos sensores (Lidar/Laser),
 gerando falsos positivos de divergência acima da média estatística da rodovia.
