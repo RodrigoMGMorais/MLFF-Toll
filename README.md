@@ -26,3 +26,15 @@ A implantação física do MLFF substitui completamente as praças de pedágio c
 ## 🏗️ 2. Arquitetura de Sistemas e Integração de Dados
 
 O fluxo de dados do MLFF baseia-se em uma arquitetura desacoplada e orientada a eventos, movendo a transação do processamento de borda (Edge) até a conciliação financeira no Back Office.
+
+[ VEÍCULO ] 🚗💨
+│
+▼
+[ PÓRTICO (RSS) ] ──( Sensores / OCR / Lidar / Antenas )
+│
+▼ (Mensageria Assíncrona: ActiveMQ / RabbitMQ)
+[ BACK OFFICE CENTRAL (CBO/OBO) ]
+│
+├─► [ InteropFlex (IFX) ] ──► Validação de Regras (ARTESP) ──► [ OPERADORAS (OSA) ]
+├─► [ TOMO ] ───────────────► Processamento de Imagens e Auditoria de Vídeo
+└─► [ MeuPedágio Portal ] ──► Arrecadação de Passagens Sem TAG (PIX / Cartão)
