@@ -41,7 +41,9 @@ Query utilizada para mapear se algum pórtico específico está apresentando ano
 SELECT 
     id_portico,
     COUNT(id_transacao) AS total_divergencias,
-    ROUND((COUNT(id_transacao) * 100.0 / (SELECT COUNT(*) FROM tb_passagem WHERE dt_passagem >= NOW() - INTERVAL '24 HOURS')), 2) AS percentual_do_trafego
+    ROUND((COUNT(id_transacao) * 100.0 / (SELECT COUNT(*)
+FROM tb_passagem
+WHERE dt_passagem >= NOW() - INTERVAL '24 HOURS')), 2) AS percentual_do_trafego
 FROM tb_passagem
 WHERE cd_motivo_nao_comp = 5 -- Erro de Categoria Divergente
   AND dt_passagem >= NOW() - INTERVAL '24 HOURS'
